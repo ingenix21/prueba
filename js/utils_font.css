@@ -1,0 +1,237 @@
+
+@font-face {
+  font-family: 'CODE3X-D';
+  src: url("../font/barcode/9031_code3x/CODE3X-D.TTF");
+}
+.CODE3X-D {
+  font-family: 'CODE3X-D';
+}
+@font-face {
+  font-family: 'CODE3X-R';
+  src: url("../font/barcode/9031_code3x/CODE3X-R.TTF");
+}
+.CODE3X-R {
+  font-family: 'CODE3X-R';
+}
+@font-face {
+  font-family: 'BarcodeFont';
+  src: url("../font/barcode/anke-art/BarcodeFont.ttf");
+}
+.BarcodeFont {
+  font-family: 'BarcodeFont';
+}
+@font-face {
+  font-family: 'barcoding';
+  src: url("../font/barcode/arrf-designs_barcoding/barcoding.ttf");
+}
+.barcoding {
+  font-family: 'barcoding';
+}
+@font-face {
+  font-family: 'Code39Azaleao';
+  src: url("../font/barcode/azalea-software-inc_code39azalea/Code39Azalea.otf");
+}
+.Code39Azaleao {
+  font-family: 'Code39Azaleao';
+}
+@font-face {
+  font-family: 'Code39Azaleat';
+  src: url("../font/barcode/azalea-software-inc_code39azalea/Code39Azalea.ttf");
+}
+.Code39Azaleat {
+  font-family: 'Code39Azaleat';
+}
+@font-face {
+  font-family: 'Code39Azaleaw';
+  src: url("../font/barcode/azalea-software-inc_code39azalea/Code39Azalea.woff");
+}
+.Code39Azaleaw {
+  font-family: 'Code39Azaleaw';
+}
+@font-face {
+  font-family: 'BarcodeFont2';
+  src: url("../font/barcode/barcode_font/BarcodeFont.ttf");
+}
+.BarcodeFont2 {
+  font-family: 'BarcodeFont2';
+}
+@font-face {
+  font-family: 'Paskowy';
+  src: url("../font/barcode/barmee_paskowy/Paskowy.ttf");
+}
+.Paskowy {
+  font-family: 'Paskowy';
+}
+@font-face {
+  font-family: 'code128';
+  src: url("../font/barcode/code128/code128.ttf");
+}
+.code128 {
+  font-family: 'code128';
+}
+@font-face {
+  font-family: 'fre3of9x';
+  src: url("../font/barcode/free3of9/fre3of9x.ttf");
+}
+.fre3of9x {
+  font-family: 'fre3of9x';
+}
+@font-face {
+  font-family: 'free3of9';
+  src: url("../font/barcode/free3of9/free3of9.ttf");
+}
+.free3of9 {
+  font-family: 'free3of9';
+}
+@font-face {
+  font-family: 'IDAutomationHC39M';
+  src: url("../font/barcode/idautomationcom/IDAutomationHC39M.ttf");
+}
+.IDAutomationHC39M {
+  font-family: 'IDAutomationHC39M';
+}
+@font-face {
+  font-family: 'IDAutomationHC39M_FREE';
+  src: url("../font/barcode/idautomationcom/IDAutomationHC39M_FREE.otf");
+}
+.IDAutomationHC39M_FREE {
+  font-family: 'IDAutomationHC39M_FREE';
+}
+@font-face {
+  font-family: 'FRE3OF9X';
+  src: url("../font/barcode/i-shot-the-serif_free-3-of-9/FRE3OF9X.TTF");
+}
+.FRE3OF9X {
+  font-family: 'FRE3OF9X';
+}
+@font-face {
+  font-family: 'FREE3OF9';
+  src: url("../font/barcode/i-shot-the-serif_free-3-of-9/FREE3OF9.TTF");
+}
+.FREE3OF9 {
+  font-family: 'FREE3OF9';
+}
+@font-face {
+  font-family: 'ADVHC39B';
+  src: url("../font/barcode/ADVHC39B.TTF" );
+}
+.ADVHC39B {
+  font-family: 'ADVHC39B';
+}
+@font-face {
+  font-family: 'codeEAN13Text';
+  src: url("../font/barcode/librebarcode/codeEAN13Text.ttf");
+}
+.codeEAN13Text {
+  font-family: 'codeEAN13Text';
+}
+@font-face {
+  font-family: 'code39';
+  src: url("../font/barcode/librebarcode/code39.ttf");
+}
+.code39 {
+  font-family: 'code39';
+}
+@font-face {
+  font-family: 'code39Text';
+  src: url("../font/barcode/librebarcode/code39Text.ttf");
+}
+.code39Text {
+  font-family: 'code39Text';
+}
+@font-face {
+  font-family: 'code39Extended';
+  src: url("../font/barcode/librebarcode/code39Extended.ttf");
+}
+.code39Extended {
+  font-family: 'code39Extended';
+}
+@font-face {
+  font-family: 'code39ExtendedText';
+  src: url("../font/barcode/librebarcode/code39ExtendedText.ttf");
+}
+.code39ExtendedText {
+  font-family: 'code39ExtendedText';
+}
+@font-face {
+  font-family: 'code128';
+  src: url("../font/barcode/librebarcode/code128.ttf");
+}
+.code128 {
+  font-family: 'code128';
+  white-space:pre;
+  display: block;
+}
+@font-face {
+  font-family: 'code128Text';
+  src: url("../font/barcode/librebarcode/code128Text.ttf");
+}
+.code128Text {
+  font-family: 'code128Text';
+  white-space:pre;
+  display: block;
+}
+@font-face {
+  font-family: 'cour';
+  src: url("../font/cour.ttf");
+}
+.cour {
+  font-family: 'cour';
+  white-space:pre;
+  display: block;
+}
+@font-face {
+  font-family: 'mplus-1m-light';
+  src: url("../font/mplus-1m-light.ttf");
+}
+.mplus-1m-light {
+  font-family: 'mplus-1m-light';
+  white-space:pre;
+  display: block;
+}
+
+.f08p { font-size: 08px }
+.f09p { font-size: 09px }
+.f10p { font-size: 10px }
+.f11p { font-size: 11px }
+.f12p { font-size: 12px }
+.f13p { font-size: 13px }
+.f14p { font-size: 14px }
+.f15p { font-size: 15px }
+.f16p { font-size: 16px }
+.f18p { font-size: 18px }
+.f20p { font-size: 20px }
+.f22p { font-size: 22px }
+.f24p { font-size: 24px }
+.f26p { font-size: 26px }
+.f28p { font-size: 28px }
+.f30p { font-size: 30px }
+.f32p { font-size: 32px }
+.f34p { font-size: 34px }
+.f36p { font-size: 36px }
+.f38p { font-size: 38px }
+.f40p { font-size: 40px }
+.f42p { font-size: 42px }
+.f44p { font-size: 44px }
+.f46p { font-size: 46px }
+.f48p { font-size: 48px }
+.f50p { font-size: 50px }
+.f52p { font-size: 52px }
+.f54p { font-size: 54px }
+.f56p { font-size: 56px }
+.f58p { font-size: 58px }
+.f60p { font-size: 60px }
+.f62p { font-size: 62px }
+.f64p { font-size: 64px }
+.f66p { font-size: 66px }
+.f68p { font-size: 68px }
+.f70p { font-size: 70px }
+.f72p { font-size: 72px }
+.f74p { font-size: 74px }
+.f76p { font-size: 76px }
+.f78p { font-size: 78px }
+.f80p { font-size: 80px }
+.f82p { font-size: 82px }
+.f84p { font-size: 84px }
+.f86p { font-size: 86px }
+.f88p { font-size: 88px }

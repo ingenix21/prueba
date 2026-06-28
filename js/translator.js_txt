@@ -1,0 +1,673 @@
+/**
+ * translator.js 1.0 2023/05/10
+ * by (por): Carlos E. Mendoza S., 10/11/2015
+ * Copyright (c) 2015-&up INGENIX Consulting-VE.  All rights reserved.
+ *
+ * INGENIX 21 grants you a royalty free license to use or modify this
+ * software provided that this copyright notice appears on all copies.
+ * This software is provided 'AS IS,' without a warranty of any kind.
+ *
+ * INGENIX 21 le otorga una licencia gratuita para usar y/o modificar
+ * este software siempre que mantenga este COPYRIGHT en todas las copias.
+ * Este software es entregado 'COMO ESTA', sin ningun tipo de garantia.
+ */
+
+LANG_translate();
+
+function LANG_translate() {
+  var data, label, i, n, END = 0, PRE = 0, NOTR = 0, x, y, z;
+
+  UTF8 = (document.querySelector('meta[charset]')||{'outerHTML':''}).outerHTML.toUpperCase().indexOf('UTF-8') +1;
+
+  FLAG = '../js/flag/4x3';    // sinfonix/js (ISO-8859)
+//   FLAG = 'images/flag/4x3';   // www/*       (UTF-8)
+
+  languages = {
+    'en' : ['English','us'],
+    'es' : ['Español','es'],
+    'fr' : ['Française','fr'],
+    'pt' : ['Português','pt'],
+    'de' : ['Deutsche','de'],
+    'it' : ['Italiano','it'],
+    'zh' : ['簡體中文','cn'],
+    'hi' : ['हिंदी','in'],
+    'ar' : ['عرب','ae'],
+    'ru' : ['Русский','ru'],
+  }
+  if ( UTF8 ) {
+    languages = {
+   ...languages,
+   ...{'af' : ['Afrikáans',''],
+      'sq' : ['Albanés',''],
+      'am' : ['Amárico',''],
+      'hy' : ['Armenio',''],
+      'as' : ['Asamés',''],
+      'ay' : ['Aimara',''],
+      'az' : ['Azerbaiyano',''],
+      'bm' : ['Bambara',''],
+      'eu' : ['Vasco',''],
+      'be' : ['Bielorruso',''],
+      'bn' : ['Bengalí',''],
+     'bho' : ['Bhospuri',''],
+      'bs' : ['Bosnio',''],
+      'bg' : ['Búlgaro',''],
+      'ca' : ['Catalán',''],
+     'ceb' : ['Cebuano',''],
+   'zh-TW' : ['繁體中文','cn'],
+      'co' : ['Corso',''],
+      'hr' : ['Croata',''],
+      'cs' : ['Checo',''],
+      'da' : ['Danés',''],
+      'dv' : ['Dhivehi',''],
+     'doi' : ['Dogri',''],
+      'nl' : ['Holandés',''],
+      'eo' : ['Esperanto',''],
+      'et' : ['Estonio',''],
+      'ee' : ['Ewe',''],
+     'fil' : ['Filipino (tagalo)',''],
+      'fi' : ['Finés',''],
+      'fy' : ['Frisón',''],
+      'gl' : ['Gallego',''],
+      'ka' : ['Georgiano',''],
+      'el' : ['Grieg',''],
+      'gn' : ['Guaraní',''],
+      'gu' : ['Guyaratí',''],
+      'ht' : ['Criollo haitiano',''],
+      'ha' : ['Hausa',''],
+     'haw' : ['Hawaiano',''],
+      'he' : ['Hebreo',''],
+      'iw' : ['Hebreo',''],
+     'hmn' : ['Hmong',''],
+      'hu' : ['Húngaro',''],
+      'is' : ['Islandés',''],
+      'ig' : ['Igbo',''],
+     'ilo' : ['Ilocano',''],
+      'id' : ['Indonesio',''],
+      'ga' : ['Irlandés',''],
+      'ja' : ['Japonés',''],
+      'jv' : ['Javanés',''],
+      'jw' : ['Javanés',''],
+      'kn' : ['Canarés',''],
+      'kk' : ['Kazajo',''],
+      'km' : ['Jemer',''],
+      'rw' : ['Kiñaruanda',''],
+     'gom' : ['Konkani',''],
+      'ko' : ['Corean',''],
+     'kri' : ['Krio',''],
+      'ku' : ['Curdo',''],
+     'ckb' : ['Kurdo (Sorani)',''],
+      'ky' : ['Kirg',''],
+      'lo' : ['Laosiano',''],
+      'la' : ['Latín',''],
+      'lv' : ['Letón',''],
+      'ln' : ['Lingala',''],
+      'lt' : ['Lituano',''],
+      'lg' : ['Luganda',''],
+      'lb' : ['Luxemburgués',''],
+      'mk' : ['Macedonio',''],
+     'mai' : ['Maithili',''],
+      'mg' : ['Malgache',''],
+      'ms' : ['Malayo',''],
+      'ml' : ['Malabar',''],
+      'mt' : ['Maltés',''],
+      'mi' : ['Maorí',''],
+      'mr' : ['Marathi',''],
+'mni-Mtei' : ['Meiteilon (manipuri)',''],
+     'lus' : ['Mizo',''],
+      'mn' : ['Mongol',''],
+      'my' : ['Birmano',''],
+      'ne' : ['Nepalí',''],
+      'no' : ['Noruego',''],
+      'ny' : ['Nyanja (chichewa)',''],
+      'or' : ['Odia (oriya)',''],
+      'om' : ['Oromo',''],
+      'ps' : ['Pashto',''],
+      'fa' : ['Persa',''],
+      'pl' : ['Polaco',''],
+      'pa' : ['Punjabi',''],
+      'qu' : ['Quechua',''],
+      'ro' : ['Rumano',''],
+      'sm' : ['Samoano',''],
+      'sa' : ['Sánscr',''],
+      'gd' : ['Gaélico esc',''],
+     'nso' : ['Sepedi',''],
+      'sr' : ['Serbio',''],
+      'st' : ['Sesoto',''],
+      'sn' : ['Shona',''],
+      'sd' : ['Sindhi',''],
+      'si' : ['Cingalés',''],
+      'sk' : ['Eslovaco',''],
+      'sl' : ['Esloveno',''],
+      'so' : ['Somalí',''],
+      'su' : ['Sundanés',''],
+      'sw' : ['Suajili',''],
+      'sv' : ['Sueco',''],
+      'tl' : ['Tagalo (filipino)',''],
+      'tg' : ['Tayiko',''],
+      'ta' : ['Tamil',''],
+      'tt' : ['Tártaro',''],
+      'te' : ['Telugú',''],
+      'th' : ['Tailandés',''],
+      'ti' : ['Tigriña',''],
+      'ts' : ['Tsonga',''],
+      'tr' : ['Turco',''],
+      'tk' : ['Turcom',''],
+      'ak' : ['Twi (Akan)',''],
+      'uk' : ['Ucraniano',''],
+      'ur' : ['Urdu',''],
+      'ug' : ['Uigur',''],
+      'uz' : ['Uzbeko',''],
+      'vi' : ['Vietnamita',''],
+      'cy' : ['Galés',''],
+      'xh' : ['Xhosa',''],
+      'yi' : ['Yiddish',''],
+      'yo' : ['Yoruba',''],
+      'zu' : ['Zulú',''],
+      }
+    };
+  };
+  if ( ! UTF8 ) {
+    Object.keys(languages).forEach(function(select) {
+      try { languages[select][0] = decodeURIComponent(escape(languages[select][0])) } catch(err){
+        delete languages[select]
+      };
+    })
+  }
+
+  PATH = location.pathname.split('/'), APP = PATH.pop(), PATH = PATH.join('/')+'/', APP = PATH + (APP||'index.html');
+//   APP  = location.pathname, PATH = APP.split('/'), PATH.pop(), PATH = PATH.join('/')+'/';
+  x = location.search.split('?');
+  if ( APP.indexOf('sinfonix') > -1 && x.length > 1 ) {
+    APP += '?'+ decodeURI(x[1].split('#')[0].split('&')[0]).split(' ')[1];
+  }
+  y = document.querySelector('script[data-iface]')||{'dataset':{}};
+  LANG_iface  = y.dataset.iface ||'jQM';                           // [ jQM | Bootstrap ]    Interface
+  LANG_source = document.querySelectorAll('[data-translate]')||''; // [ <script> | <style> ] To Translator
+  z = y.dataset.pages||'';                                         // [ 'pages'[, 'pages'] ] To Translator
+  if ( typeof LANG_pages == 'undefined' ) { LANG_pages = z;
+  } else { if ( z ) { z = ','+ z }; LANG_pages += z; 
+  }
+
+  LANG_default = navigator.language;
+  if ( !languages[ LANG_default ] )
+    LANG_default = LANG_default.split('-')[0];
+    
+    if ( !languages[ LANG_default ] )
+      LANG_default = 'en';
+
+  LANG = JSON.parse(localStorage.getItem('LANG_'+ APP))||{'select':LANG_default,'languages':{'es':{}},'error':{}};
+
+  if ( LANG.select == 'es' )
+    return LANG_translate_continue();
+
+  if ( ! LANG.languages[ LANG.select ] ) {
+    document.body.onload = void(0);
+    LANG_load( LANG.select );
+    return
+  }
+
+//   data  = document.body.innerHTML.split('<script');
+//   for ( i = 1; i < data.length; i++ ) {
+//     x = data[i].split('</script>');
+// console.log(x[0]);
+//     x[0] = x[0].split('>')[0] +'>';
+// console.log(x[0]);
+//     data[i] = x.join('</script>');
+//   };
+//   data  = data.join('<script').split('<style');
+//   for ( i = 1; i < data.length; i++ ) {
+//     x = data[i].split('</style>');
+//     x[0] = x[0].split('>')[0] +'>';
+//     data[i] = x.join('</style>');
+//   };
+//   data  = data.join('<style').split('<');
+
+  data  = document.body.innerHTML.split('<--').join('\x11\x12\x13').split('<');
+  label = LANG.languages[LANG.select]||{};
+  for ( i = 0; i < data.length; i++ ) {
+    x = data[i].split('>');
+    y = x[0].toUpperCase().split(' ');
+    if ( y[0].search(/[\\!-.+|;]/) == -1 && !['SCRIPT','STYLE'].includes( y[0] ) ) {
+      if ( y[0] ==  'PRE' ) { PRE++ };
+      if ( y[0] == '/PRE' && PRE ) { PRE-- };
+
+      if ( [ 'NOTR', 'OPTION'].includes( y[0] ) ) { NOTR++ };
+      if ( ['/NOTR','/OPTION'].includes( y[0] ) && NOTR ) { NOTR-- };
+
+      if ( NOTR < 1 ) {
+        y = x[ x.length -1 ].split('\n'); if ( !PRE ) { y = [ y.join(' ').replace(/( )\1+/gmi, '$1') ] };
+        for ( n = 0; n < y.length; n++ ) {
+          z = LANG_normalize(y[n]);
+          if ( label[z] ) { y[n] = label[z] } else { console.info(z) };
+        };
+        y = y.join('\n');
+        x[ x.length -1 ] = y.split('<').join('&lt;').split('  ').join('&nbsp;&nbsp;');
+
+        x = LANG_putTag(label, x, 'label');
+        x = LANG_putTag(label, x, 'value');
+        x = LANG_putTag(label, x, 'title');
+        x = LANG_putTag(label, x, 'placeholder');
+      }
+      data[i] = x.join('>');
+    }
+  }
+  data = data.join('<').split('\x11\x12\x13').join('<--');
+  data = data.split('\"'+ FLAG +'es.svg?xyz\"').join('\"'+ FLAG + (languages[ LANG.select ][1]||'un') +'.svg?xyz\"');
+  document.body.innerHTML = data;
+
+  LANG_source.forEach(function(data) {
+    var url = data.src || data.href || '';
+    END++;
+    if ( url.indexOf('.js' )+1 || url.indexOf('.css')+1 ) {
+      $.ajax({
+        url: url,
+        dataType: 'text',
+
+      }).always(function( data, textStatus, jqxhr ) {
+        if ( textStatus.toUpperCase().indexOf('ERROR') != -1 ) {
+          return LANG_checkInternet(select, textStatus);
+        };
+        LANG_translate_script(data, url, label);
+        if ( LANG_source.length == END )
+          LANG_translate_continue();
+      });
+    } else {
+      LANG_translate_script(encodeURI(data.innerHTML), url, label);
+    }
+  });
+  if ( LANG_source.length == END )
+    return LANG_translate_continue();
+}
+function LANG_translate_continue() {
+  var html, x, y, z;
+  document.body.style.display = 'none';
+  document.body.style.visibility = '';
+  $(document.body).show();
+  html = document.createElement('style');
+  html.innerHTML = '\
+.ui-icon-LANG_flag:after {\
+background-image: url(\''+ FLAG + (languages[ LANG.select ][1]||'un') +'.svg\');\
+background-position: 3px 6px;\
+background-size: 72%;\
+}';
+  document.body.append(html);
+
+  html = document.querySelector('[name=LANG_Panel_Language]')
+  if ( html ) {
+    html.title='\
+Change language\n\
+Cambiar idioma\n\
+Changer de langue\n\
+Mudar idioma\n\
+Sprache ändern\n\
+Cambia lingua\n\
+';
+    if ( UTF8 ) {
+      html.title+='\
+改变语言\n\
+भाषा बदलें\n\
+تغيير اللغة\n\
+Изменить языкnn\n\
+';
+    } else {
+      Object.keys(languages).forEach(function(select) {
+        try { html.title = decodeURIComponent(escape(html.title)) } catch(err){};
+      })
+    }
+  };
+  if ( ! document.getElementById('LANG') ) {
+
+    switch( LANG_iface ) {
+      case 'Bootstrap':
+        html = '\
+<a id=\"LANG\" class=\"nav-link dropdown-toggle\" href=\"#\" id=\"LANG_navMenu\" data-toggle=\"dropdown\" aria-haspopup=\"true\"\ aria-expanded=\"false\"><img src=\"'+ FLAG + (languages[ LANG.select ][1]||'un') +'.svg\" style=\"width:16px;height:14px\"></a>\
+<ul class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"LANG_navMenu\" style=\"height:350px;overflow-Y:auto\">';
+        Object.keys(languages).forEach(function(select) {
+          if ( select != LANG.select )
+            html +='\
+ <li><a class=\"dropdown-item\" href=\"javascript:LANG_set(\''+ select +'\')\"><img src=\"'+ FLAG + languages[ select ][1] +'.svg\" style=\"width:16px;height:14px\">&nbsp;&nbsp;&nbsp;'+ languages[ select ][0]+'</a></li>';
+        });
+        html +='\
+</ul>\
+';
+        z = document.getElementById('LANG_content')
+        if ( z )
+          z.innerHTML = html;
+
+        break;
+
+      case 'jQM':
+        html = '\
+  <div data-role=\"header\" data-position=\"fixed\" data-tap-toggle=\"false\" data-theme=\"b\">\
+   <a href=\"#\" data-icon=\"fa-arrow-left\" data-iconpos=\"notext\" title=\"Volver Atras\" data-rel=\"back\">back</a>\
+   <h1>language ';
+        if ( UTF8 ) {
+          html+= '\
+/ 語言 / भाषा / لغة / язык '
+        }
+        html+= '\
+/ sprache / idioma</h1>\
+  </div><!-- /header -->\
+  <div data-role=\"main\" class=\"ui-content\">\
+   <ul data-role=\"listview\" data-inset=\"true\">'
+        Object.keys(languages).forEach(function(select) {
+          if ( select != LANG.select )
+            html +='\
+    <li>\
+     <a href=\"javascript:LANG_set(\''+ select +'\')\">\
+      <img src=\"'+ FLAG + languages[ select ][1] +'.svg\" alt=\"'+ languages[ select ][0] +'\" class=\"ui-li-icon ui-corner-none\">'+ languages[ select ][0] + ((LANG.languages[ select ]||select=='es') ? ' *': '') +'</a></li>';
+        });
+        html +='\
+   </ul>\
+  </div>';
+        z = document.createElement('div');
+        z.id = 'LANG';
+        z.dataset.role = 'page';
+        z.innerHTML = html;
+        document.body.append(z);
+        break;
+
+      default:
+        break;
+    }
+  };
+}
+function LANG_translate_script(data, url, label) {
+  var js = data.split('\x5C\x22').join('\x01\x02\x03').split('\x22'), x, y, z;
+  for( x = 1; x < js.length; x += 2 ) {
+    y = label[ js[x].split('\x01\x02\x03').join('\x22') ];
+    if ( y )
+      js[x] = y.split('\x22').join('\x5C\x22');
+  };
+  data = js.join('\x22').split('\x01\x02\x03').join('\x5C\x22');
+  if ( url.indexOf('.css')+1 ) { z = 'style' } else { z = 'script' };
+  $('html').append('<'+ z +' data-src=\"'+ url +'\">'+ data +'</'+ z +'>');
+}
+function LANG_load(select) {
+  if ( select && select != 'es' ) {
+    var data = document.body.innerHTML, TAG, i, text = '', END = 0, PRE = 0, NOTR = 0, x, y, z;
+
+    TAG = data.split('<script');
+    for ( i = 1; i < TAG.length; i++ ) {
+      x = TAG[i].split('</script>');
+console.log(x[0]);
+      x[0] = x[0].split('>')[0] +'>';
+console.log(x[0]);
+      TAG[i] = x.join('</script>');
+    }
+    TAG = TAG.join('<script').split('<style');
+    for ( i = 1; i < TAG.length; i++ ) {
+      x = TAG[i].split('</style>');
+      x[0] = x[0].split('>')[0] +'>';
+      TAG[i] = x.join('</style>');
+    }
+    TAG = TAG.join('<style').split('<--').join('\x11\x12\x13').split('<');
+    for ( i = 0; i < TAG.length; i++ ) {
+      x = TAG[i].split('>');
+      y = x[0].toUpperCase().split(' ');
+      if ( y[0].search(/[\\!-.+|;]/) == -1 && !['SCRIPT','STYLE'].includes( y[0] ) ) {
+        if ( y[0] ==  'PRE' ) { PRE++ };
+        if ( y[0] == '/PRE' && PRE ) { PRE-- };
+
+        if ( [ 'NOTR', 'OPTION'].includes( y[0] ) ) { NOTR++ };
+        if ( ['/NOTR','/OPTION'].includes( y[0] ) && NOTR ) { NOTR-- };
+
+        if ( NOTR < 1 ) {
+          y = x[ x.length -1 ].split('\n'); if ( !PRE ) { y = [ y.join(' ').replace(/( )\1+/gmi, '$1') ] };
+//           if ( PRE ) {
+//             y = x[ x.length -1 ].split('\n');
+//           } else {
+//             z = x[ x.length -1 ];
+//             y = [ z.replace(/( )\1+/gmi, '$1').replace(/(\n)\1+/gmi, '$1').split('\n ').join(' ').split('\n').join(' ') ];
+//           }
+          y.forEach(function(z) {
+            text = LANG_normalize(z, text);
+          });
+          text = LANG_getTag(text, x, 'value');
+          text = LANG_getTag(text, x, 'title');
+          text = LANG_getTag(text, x, 'placeholder');
+        };
+      };
+    };
+    LANG_source.forEach(function(data) {
+      var url = data.src || data.href || '';
+      if ( url.indexOf('.js' )+1 || url.indexOf('.css')+1 ) {
+        $.ajax({
+          url: url,
+        }).always(function( data, textStatus, jqxhr ) {
+          if ( textStatus.toUpperCase().indexOf('ERROR') != -1 ) {
+            return LANG_checkInternet(select, textStatus);
+          };
+          text = LANG_load_script(data, text);
+          if ( ++END == LANG_source.length ) {
+            LANG_load_continue(select, text);
+          };
+        });
+      } else {
+        text = LANG_load_script(data.innerHTML, text);
+        ++END;
+      };
+    });
+    if ( LANG_source.length == END ) {
+      LANG_load_continue(select, text);
+    };
+  }
+}
+function LANG_load_script(data, text) {
+  var js = data.split('\x5C\x22').join('\x01\x02\x03').split('\x22'), x, y, z;
+  for( x=1; x<js.length; x+=2 ) {
+    js[x].split('\n').forEach(function(z) {
+      text = LANG_normalize(z.split('\x01\x02\x03').join('\x22'), text);
+    });
+  };
+  return text;
+}
+function LANG_load_continue(select, text) {
+  var END2 = 0, x, y, z;
+  LANG.languages[ select ] = {};
+
+  while ( text ) {
+    END2++;
+    z = text.substr(4500).indexOf('[\n');
+    if ( z != -1 ) { z = z + 4502 } else { z = text.length };
+    x = encodeURIComponent( text.substr(0,z) ), text = text.substr(z);
+console.log(x);
+    $.ajax({
+      url: 'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=es&tl='+ select +'&q='+ x,
+      dataType: 'json',
+
+    }).always(function( data, textStatus, jqxhr ) {
+      if ( textStatus.toUpperCase().indexOf('ERROR') != -1 ) {
+        return LANG_checkInternet(select, textStatus);
+      };
+      var x = '', y = '', z;
+      data[0].forEach(function(z) {
+console.log(z);
+//       z = '] '+ z.split('\"').join(': \"') +' [\n';
+//       z = z.split('] : \"').join(']\"').split('  ').join(' _ ').split('  ').join(' _ ').split('  ').join(' _ ');
+
+        x += z[1].split('[\n').join('[');
+        y += z[0].split('[\n').join('[');
+
+        if ( x.substr([x.length -1]) == '[' ) {
+console.log(x);
+console.log(y);
+          x = x.split(' _ ').join('  ').split(' _ ').join('  ').split(' _ ').join('  ').split(': \"').join('\"').split('\n').join('');
+          y = y.split(' _ ').join('  ').split(' _ ').join('  ').split(' _ ').join('  ').split(': \"').join('\"').split('\n').join('');
+
+          if (x.split(' \"[').length > 1 && y.split(' \"[').length == 1 )
+            y = y.split('\"[').join(' \"[');
+
+          if ( x.substr(0,2)=='] ' ) { x = x.substr(2) } else
+          if ( x.substr(0,1)==']'  ) { x = x.substr(1) };
+
+          if ( y.substr(0,2)=='] ' ) { y = y.substr(2) } else
+          if ( y.substr(0,1)==']'  ) { y = y.substr(1) };
+
+//           if ( x.substr(x.length-2)==' [' ) { x = x.substr(0,x.length-2) } else
+          if ( x.substr(x.length-1)== '[' ) { x = x.substr(0,x.length-1) };
+
+//           if ( y.substr(y.length-2)==' [' ) { y = y.substr(0,y.length-2) } else
+          if ( y.substr(y.length-1)== '[' ) { y = y.substr(0,y.length-1) };
+
+          if ( ! UTF8 ) {
+            try { y = decodeURIComponent(escape(y)) } catch(err){};
+            try { x = decodeURIComponent(escape(x)) } catch(err){};
+          }
+          if ( x != y )
+            LANG.languages[ select ][ x ] = y;
+
+console.log(x);
+console.log(y);
+          x = y = '';
+        } else {
+          x += ' ';
+        }
+      });
+      if ( !--END2 && ! text) {
+        return LANG_set(select);
+      }
+    });
+  };
+}
+function LANG_normalize(z, text) {
+console.log('1"'+ z +'"');
+  z = $('<textarea>').html(z).text().split('\xa0').join(' ');
+  if ( z.trim() ) {
+    z = z.split('¿').join('').split('¡').join('');
+    z = LANG_remove(z,'?');
+    z = LANG_remove(z,'!');
+  } else {
+    z = ''
+  }
+console.log('2"'+ z +'"');
+  if ( text != undefined ) {
+    if ( z ) {
+      z = '] '+ z.split('\"').join(': \"') +'[\n';
+      z = z.split('] : \"').join(']\"').split('  ').join(' _ ').split('  ').join(' _ ').split('  ').join(' _ ');
+      if ( text.indexOf( z ) == -1 ) {
+        text += z;
+console.log('3"'+ z +'"');
+      }
+    }
+    return text;
+  }
+  return z;
+}
+function LANG_remove(a,b) {
+  var z = a.split(b);
+  if ( z.length > 2 ) {
+    z[ z.length -1 ] = '1234567890abcdef'+ b + z[ z.length -1 ];
+    a = z.join(',').split(',1234567890abcdef'+ b).join(b);
+  };
+  return a;
+}
+function LANG_set(select) {
+  var x, y, z;
+  try { 
+    if ( LANG_iface == 'Bootstrap' ) {
+      $('#LANG').find('img')[0].src = FLAG.substr(0,FLAG.length -3) + '../loading21.gif';
+    } else {
+      $.mobile.loading( 'show' );
+    }
+  } catch(err) {console.error(err)};
+
+  LANG.select = select.trim();
+  localStorage.setItem( 'LANG_'+ APP, JSON.stringify( LANG ) );
+
+  if ( LANG_pages ) {
+    try { x = JSON.parse( '[\"'+ LANG_pages.split(' ').join('').split(',').join('\",\"') +'\"]');
+      x.forEach(function(href) {
+        if ( 'http'.indexOf(href) != 0 ) {
+          href = PATH + href;
+        }
+        xPATH = href.split('/'), xAPP = xPATH.pop(), xPATH = xPATH.join('/')+'/', xAPP = xPATH + (xAPP||'index.html');
+//         xAPP  = href, xPATH = xAPP.split('/'), xPATH.pop(), xPATH = xPATH.join('/')+'/';
+        x = href.split('?');
+        if ( xAPP.indexOf('sinfonix') > -1 && x.length > 1 ) {
+          xAPP += '?'+ decodeURI(x[1].split('#')[0].split('&')[0]).split(' ')[1];
+        }
+        z = JSON.parse(localStorage.getItem( 'LANG_'+ xAPP))||{'select':select,'languages':{'es':{}},'error':{}};
+        z.select = select;
+        localStorage.setItem( 'LANG_'+ xAPP, JSON.stringify( z ) );
+      });
+    } catch(err) {console.error(err)};
+  }
+  if ( LANG.select != 'es' && ! LANG.languages[ LANG.select ] ) {
+    z = location.href;//.split('#')[0];
+    $( '<iframe name=\"LANG_'+ new Date().getTime()+'\" src=\"'+ z +'\">' ).css( 'display','none' ).appendTo( 'body' );
+    return
+  }
+  if ( LANG_iface == 'jQM' ) {
+    top.parent.location.replace( top.parent.location.href.split('#')[0] );
+  } else {
+   top.parent.location.reload(1);// top.parent.location.href );//.split('#')[0] );
+  }
+}
+function LANG_getTag(text, x, data) {
+  var y, z;
+  x = x.join('>').split(data +'='), y = x[0].toUpperCase();
+  if ( x.length > 1 ) {
+    if ( data  == 'title' || data  == 'placeholder' || !y.indexOf('A ') || ( !y.indexOf('INPUT ') && y.split('\'').join('\"').indexOf('TYPE=\"BUTTON\"') +1 ) ) {
+      if (x[1][0] == '\"' || x[1][0] == '\'' ) {
+        z = x[1].split('\\'+x[1][0]).join('\x01\x02\x03').split( x[1][0] )[1].split('\x01\x02\x03').join('\\'+x[1][0]);
+      } else {
+        z = x[1].split(' ')[0];
+      }
+      if ( z.length > 1 ) {
+        z.split('&nbsp;').join('_').split('\n').forEach(function(z) {;
+          if ( z.trim() && text.indexOf(']'+ z +'[\n') == -1 )
+            text +=  ']'+ z +'[\n';
+        });
+      };
+    };
+  };
+  return text;
+}
+function LANG_putTag(label, x, data) {
+  var y, z, z0, z1;
+  x = x.join('>').split(data +'='), y = x[0].toUpperCase();
+  if ( x.length > 1 ) {
+    if ( data  == 'title' || data  == 'placeholder' || !y.indexOf('A ') || ( !y.indexOf('INPUT ') && y.split('\'').join('\"').indexOf('TYPE=\"BUTTON\"') +1 ) ) {
+      if (x[1][0] == '\"' || x[1][0] == '\'' ) {
+        z0 = x[1][0], z1=1, x[1] = x[1].split('\\'+ z0).join('\x01\x02\x03');
+      } else {
+        z0 = ' ', z1=0;
+      }
+      x[1] = x[1].split(z0);
+      y = x[1][z1].split('\x01\x02\x03').join('\\'+ z0).split('\n');
+      for ( var n = 0; n < y.length; n++ ) {
+        z = label[ y[n] ];
+        if ( z )
+          y[n] = z;
+      };
+      x[1][z1] = y.join('\n');
+      x[1] = x[1].join(z0).split('\x01\x02\x03').join('\\'+ z0);
+    }
+  }
+  return x.join(data +'=').split('>');
+}
+function LANG_reset() {
+  localStorage.removeItem( 'LANG_'+ APP );
+}
+function LANG_checkInternet(select, textStatus) {
+  LANG.error[select] = {};
+  LANG.error[select].PATH = PATH;
+  LANG.error[select].APP  = APP;
+  LANG.error[select].textStatus = textStatus;
+  delete LANG.languages[ select ];
+  localStorage.setItem( 'LANG_'+ APP, JSON.stringify( LANG ) );
+
+  if ( ! languages[ select ] )
+    select = 'en';
+
+  try {
+    if ( LANG_iface == 'Bootstrap' ) {
+      $('#LANG').find('img')[0].src = FLAG + languages[ LANG.select ][1];
+    } else {
+      try { $.mobile.loading( 'hide' ) } catch(err) {console.err(err)};
+    }
+  } catch(err){};
+
+  jQuery_confirm('&nbsp;', languages[ select ][2]);
+}
